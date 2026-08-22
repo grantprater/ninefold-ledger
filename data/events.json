@@ -1,0 +1,61 @@
+{
+  "_note": "Section 01, rising action. The review is announced on the player's breakthrough into Qi Awakened and puts one clock over the player, the rival and Shen Yaru at the same time.",
+  "cohort_review": {
+    "name": "The Cohort Review",
+    "days": 30,
+    "trigger": {"on_realm": 2},
+    "announcement": [
+      "The notice goes up on the outer court board the same week you break through, which everyone agrees is either very lucky or very unlucky depending on who is saying it.",
+      "",
+      "The cohort review is in thirty days. Every outer disciple of six years' standing is assessed and ranked. The top of the board goes up to the inner court. The bottom of the board goes home.",
+      "",
+      "Shen Yaru reads the notice twice and does not say anything about it, which is not like her."
+    ],
+    "reminders": [
+      {"at": 20, "line": "Twenty days. The eastern platform has a queue on it now."},
+      {"at": 10, "line": "Ten days. Two disciples from your cohort have already packed."},
+      {"at": 5,  "line": "Five days. The board has been cleaned and re-inked."},
+      {"at": 1,  "line": "Tomorrow."}
+    ],
+    "cohort_size": 9,
+    "promotion_places": 3,
+    "cut_places": 3,
+    "_cohort_note": "Tuned so that a companion you actually made time for clears the cut reliably, and one you did not is always below it. Her fate should read as consequence, not as a dice roll.",
+    "cohort": {
+      "realm_one_chance": 0.8,
+      "realm_one_tiers": [2, 8],
+      "realm_two_tiers": [1, 3]
+    }
+  },
+
+  "inner_trials": {
+    "name": "The Inner Trials",
+    "days": 45,
+    "trigger": {"on_realm": 3},
+    "rounds": 3,
+    "prize": "first_frost",
+    "announcement": [
+      "The trials are open to the whole inner court and are, everyone is careful to say, not compulsory.",
+      "",
+      "Forty-five days. Three rounds, drawn on the morning. The winner takes a rank-five blade out of the sect vault, which has been in the sect vault since before anyone currently alive joined the sect.",
+      "",
+      "You are at the third realm. So is almost everyone entering. The blade is two realms above every single one of you, and nobody has said anything about that, because saying it would be beside the point."
+    ],
+    "reminders": [
+      {"at": 30, "line": "Thirty days. The practice yards are full at every hour, including the ones that are not hours."},
+      {"at": 14, "line": "Fourteen days. The draw is posted. You read your side of it more times than is useful."},
+      {"at": 5,  "line": "Five days. Somebody has started taking bets, quietly, which is against about four rules."},
+      {"at": 1,  "line": "Tomorrow."}
+    ],
+    "opponents": [
+      {"name": "Ru Anzhi", "realm": 3, "tier": 3, "affinity": {"wood": 1.0},
+       "line": "Third round of the last trials. Talks the entire time, mostly to herself."},
+      {"name": "Kong Deshan", "realm": 3, "tier": 5, "affinity": {"earth": 1.0},
+       "line": "Enormous, slow, and extremely difficult to move off a spot he has decided to stand on."},
+      {"name": "Mo Ruozhen", "realm": 3, "tier": 6, "affinity": {"fire": 1.0},
+       "line": "Came up two years ago and has not lost a public bout since. Very polite about it."},
+      {"name": "Hu Keyao", "realm": 3, "tier": 4, "affinity": {"water": 1.0},
+       "line": "Fights entirely at range and will not be drawn in. Everyone finds this annoying."}
+    ]
+  }
+}

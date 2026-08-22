@@ -1,0 +1,70 @@
+[
+  {
+    "id": "hollow_reed",
+    "name": "Hollow Reed",
+    "rank": 1,
+    "form": "blade",
+    "authored": true,
+    "affinity": {"wood": 0.7, "water": 0.3},
+    "power": 9,
+    "ward": 1,
+    "effects": [],
+    "growth": {
+      "xp": 0,
+      "stages": [
+        {"at": 40,  "name": "Notched",   "power": 13, "note": "The nicks in the edge have started to hold qi rather than lose it."},
+        {"at": 140, "name": "Green",     "power": 20, "note": "Something in the metal has begun to behave like something alive."},
+        {"at": 340, "name": "Flowering", "power": 31, "ward": 4, "note": "It is warm when you pick it up. It was not warm before."}
+      ]
+    },
+    "will": null,
+    "description": "A thin practice blade issued to every outer disciple. Yours is bent slightly to the left and always has been."
+  },
+  {
+    "id": "widows_needle",
+    "name": "The Widow's Needle",
+    "rank": 3,
+    "form": "blade",
+    "authored": true,
+    "unique": true,
+    "affinity": {"metal": 1.0},
+    "power": 46,
+    "ward": 0,
+    "effects": [{"hook": "on_hit", "type": "bleed", "magnitude": 12}],
+    "growth": null,
+    "will": {
+      "disposition": 0.0,
+      "name": "Sixth Aunt Lu",
+      "demands": ["never_looted_from_corpse", "kill_cleanly"],
+      "voice": [
+        "The needle is cold in a way that has nothing to do with the weather.",
+        "You get the distinct sense of being assessed, and found early.",
+        "Something in the hilt settles, the way a person settles when they have decided to allow something."
+      ]
+    },
+    "description": "Rank three. Far past your grasp, and it knows it. An embroidery needle long enough to be a sword, which is exactly what it was."
+  },
+  {
+    "id": "first_frost",
+    "name": "First Frost",
+    "rank": 5,
+    "form": "blade",
+    "authored": true,
+    "unique": true,
+    "affinity": {"water": 0.6, "metal": 0.4},
+    "power": 240,
+    "ward": 12,
+    "effects": [{"hook": "on_hit", "type": "freeze", "magnitude": 40}],
+    "growth": null,
+    "will": {
+      "disposition": 0.05,
+      "name": "unnamed",
+      "demands": ["never_looted_from_corpse"],
+      "voice": [
+        "It goes exactly where you meant it to go, which is somehow worse.",
+        "For a moment you can feel the whole length of it, and how little of that length is yours."
+      ]
+    },
+    "description": "The tournament prize. Rank five, presented on a stand, in front of everybody, for being excellent. You will be at the third realm for a long time yet."
+  }
+]

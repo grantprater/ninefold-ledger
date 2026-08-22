@@ -1,0 +1,72 @@
+{
+  "_note": "Section 11. Family sets anatomy, combat role, stat shape. Three families for the MVP, chosen because between them they source all three special material properties: growth (sinew), effect hooks (venom), and will (soul remnant).",
+  "beast": {
+    "name": "Beast",
+    "role": "Fast, aggressive, closes distance and stays there.",
+    "hp_mult": 1.0,
+    "speed_mult": 1.15,
+    "power_mult": 1.0,
+    "preferred_band": 0,
+    "ai": "aggressive",
+    "anatomy": [
+      {"part": "core", "chance": 1.0, "qty": 1},
+      {"part": "hide", "chance": 0.9, "qty": 2},
+      {"part": "fang", "chance": 0.75, "qty": 2},
+      {"part": "claw", "chance": 0.7, "qty": 2},
+      {"part": "sinew", "chance": 0.55, "qty": 1},
+      {"part": "heart", "chance": 0.12, "qty": 1}
+    ],
+    "names": {
+      "fire":  ["Ember Wolf", "Cinder Hound", "Ashmane"],
+      "water": ["Mist Wolf", "Drownhound", "Riverback"],
+      "wood":  ["Thornmane", "Bramble Wolf", "Green Stalker"],
+      "metal": ["Ironjaw", "Razorback Hound", "Filed Tooth"],
+      "earth": ["Stoneback", "Dust Hound", "Cairn Wolf"]
+    }
+  },
+  "serpent": {
+    "name": "Serpent",
+    "role": "Evasive, venomous, favours single large strikes from mid range.",
+    "hp_mult": 0.8,
+    "speed_mult": 1.3,
+    "power_mult": 1.25,
+    "preferred_band": 1,
+    "ai": "skirmish",
+    "anatomy": [
+      {"part": "core", "chance": 1.0, "qty": 1},
+      {"part": "scale", "chance": 0.9, "qty": 3},
+      {"part": "fang", "chance": 0.7, "qty": 1},
+      {"part": "venom_sac", "chance": 0.45, "qty": 1},
+      {"part": "gallbladder", "chance": 0.1, "qty": 1}
+    ],
+    "names": {
+      "fire":  ["Coalcoil", "Emberadder", "Smoke Krait"],
+      "water": ["Tide Krait", "Deepcoil", "Rain Adder"],
+      "wood":  ["Vine Krait", "Rootcoil", "Green Adder"],
+      "metal": ["Wire Serpent", "Bladecoil", "Needle Adder"],
+      "earth": ["Sandcoil", "Grave Krait", "Clay Adder"]
+    }
+  },
+  "spirit": {
+    "name": "Spirit",
+    "role": "Incorporeal. Ignores part of physical defence, drains qi, holds distance.",
+    "hp_mult": 0.65,
+    "speed_mult": 1.0,
+    "power_mult": 1.1,
+    "preferred_band": 2,
+    "ai": "keep_away",
+    "physical_resist": 0.4,
+    "anatomy": [
+      {"part": "essence", "chance": 0.95, "qty": 2},
+      {"part": "core", "chance": 0.6, "qty": 1},
+      {"part": "soul_remnant", "chance": 0.08, "qty": 1}
+    ],
+    "names": {
+      "fire":  ["Pyre Wisp", "Grief-of-Ash", "Lantern Shade"],
+      "water": ["Drowned Wisp", "Weeping Shade", "Fogling"],
+      "wood":  ["Rot Wisp", "Grovehaunt", "Seedling Shade"],
+      "metal": ["Coin Shade", "Debt Wisp", "Bell Haunt"],
+      "earth": ["Barrow Wisp", "Gravehold Shade", "Dust Haunt"]
+    }
+  }
+}

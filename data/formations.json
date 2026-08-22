@@ -1,0 +1,34 @@
+{
+  "_note": "Realm 3's verb. Formations attack the tick economy rather than hit points -- which is the only thing that has ever answered a realm gap. See doc section 12.",
+
+  "binding_mesh": {
+    "name": "Binding Mesh",
+    "qi": 34,
+    "setup_ticks": 150,
+    "duration": 900,
+    "_magnitude_note": "0.9 nearly doubles what every enemy action costs them. It has to be this large to be a genuine counterweight -- it is the third realm's headline verb, it costs 34 qi and a turn of setup, and a timid version of it is decoration.",
+    "effect": {"type": "slow", "magnitude": 0.9},
+    "line": "You lay the mesh out in chalk and breath. The air inside it thickens like cooling sugar.",
+    "description": "Everything they do costs them half again as much time."
+  },
+
+  "drawing_array": {
+    "name": "Drawing Array",
+    "qi": 12,
+    "setup_ticks": 130,
+    "duration": 1200,
+    "effect": {"type": "qi_regen", "magnitude": 9},
+    "line": "You open the array and the room starts giving. It is not your qi. That is the whole point of the third realm.",
+    "description": "Draws ambient world energy back into you each time you act."
+  },
+
+  "sundering_line": {
+    "name": "Sundering Line",
+    "qi": 26,
+    "setup_ticks": 120,
+    "duration": 700,
+    "effect": {"type": "ward_break", "magnitude": 0.6},
+    "line": "A single line of chalk, drawn between you and them, and then stepped over.",
+    "description": "Strips most of what they were hiding behind."
+  }
+}

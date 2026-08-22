@@ -1,0 +1,112 @@
+{
+  "_note": "Section 01. The MVP ends at the review. Each ending is a base plus codas that account for what the run actually cost -- the codas are where the thesis lands, not the base text.",
+
+  "cut": {
+    "title": "the outer court, and then not",
+    "body": [
+      "They give you until the end of the week, which is generous, and a travelling allowance, which is not.",
+      "",
+      "You are twenty-three. You reached the second realm, which is more than most of the village you came from will manage, and less than the sect requires of someone who has had six years of its rice. Both of these are true and neither of them is interesting to anybody.",
+      "",
+      "There is no confrontation. Nobody has wronged you. The board was accurate.",
+      "",
+      "You will cultivate at home, in the evenings, after work. Plenty of people do. The Body Tempering manuals are cheap and the second realm is a genuine achievement in a market town. You will get slower at it every year and you will not particularly notice when you stop.",
+      "",
+      "Somewhere above you the realms keep going. Six of them, they say, or nine, or more than anyone has counted. You have seen two. You will always have seen two."
+    ]
+  },
+
+  "kept": {
+    "title": "you keep your place",
+    "body": [
+      "Middle of the board. Not promoted, not sent home, no ceremony either way -- your name stays where it is and the ink dries and the outer court goes back to what it was doing.",
+      "",
+      "There will be another review in six years. You know exactly what you would have to do differently, and you know roughly what it would cost, and you have now watched what that cost looks like on somebody who paid it.",
+      "",
+      "The eastern platform is free most mornings, if you want it."
+    ]
+  },
+
+  "promoted": {
+    "title": "the inner court",
+    "body": [
+      "They move your things while you are at the ceremony. It takes one trip.",
+      "",
+      "The inner court is quieter than you expected and the rooms are colder. Your new cohort is nineteen people who have all done exactly what you did and are all waiting, politely, to see what you are made of. Nobody asks where you are from.",
+      "",
+      "There is another review in four years. There is always another review. The realms go up further than you can see from here and everybody on this side of the wall is looking in the same direction, which from the outside had looked like ambition and up close mostly looks like a queue."
+    ]
+  },
+
+  "trials_won": {
+    "title": "first frost",
+    "body": [
+      "You are twenty-four, you are at the third realm, and there is a rank-five blade with your name in the vault ledger beside it.",
+      "",
+      "The inner court is warmer to you for about a fortnight. Then the next thing is announced, because there is always a next thing, and the trials become something you won once.",
+      "",
+      "Gu Wenshan is on the eastern platform of the inner court now, which is the same platform, moved. He has not congratulated you. He has not not congratulated you. He is at the third realm and climbing and nobody has ever seen him eat.",
+      "",
+      "Above the third realm the ground gets stranger. Concepts, they say, at the fourth -- things you understand rather than things you accumulate. Nobody in the inner court can tell you what that means, which does not stop any of them explaining it.",
+      "",
+      "The blade is still there. It will be there at the fourth realm too, and the fifth, and it does not get any less beautiful while you wait."
+    ]
+  },
+
+  "trials_lost": {
+    "title": "the second round, or the first",
+    "body": [
+      "Somebody else takes First Frost off the stand. You watch from the benches with everybody else and it is, honestly, a good bout.",
+      "",
+      "You are at the third realm. Six months ago you were an outer disciple with a bent practice blade and a review notice, and now you are an inner disciple who came third, or fifth, or whatever you came, and both of those facts are going to be true for a long time.",
+      "",
+      "There is another trials in three years. There is another everything in three years.",
+      "",
+      "The realms keep going up. You have seen three of them, which is one more than you had seen, and one fewer than the person who beat you will see next."
+    ]
+  },
+
+  "died": {
+    "title": "a training accident",
+    "body": [
+      "The sect records it as a training accident. The outer court loses four or five a year and the paperwork is well practised.",
+      "",
+      "Your name comes off the review board before the review, which spares everyone the arithmetic."
+    ]
+  },
+
+  "codas": {
+    "companion_gone_cut": [
+      "Shen Yaru left before you did. Nobody tells you where she went, because nobody knows, because nobody asked.",
+      "You think about writing. You know three things about her: her mother had a kiln, she thought your knots were bad, and she was at the third tier in spring. You are not sure that is enough to put on an envelope."
+    ],
+    "companion_gone_other": [
+      "Shen Yaru is not there for it. She was cut in the same review, or she left before it, and either way the outer court absorbed the gap in about a fortnight.",
+      "You were at the ninth tier of something the morning her name came down. You remember the tier."
+    ],
+    "companion_present": [
+      "Shen Yaru is there at the end of it, complaining about the knots on your travelling pack, which are the same knots she has been complaining about for two years.",
+      "\"You held your breath again,\" she says. \"At the assessment. I watched you do it.\""
+    ],
+    "foundation_flawed": [
+      "The physician at the review notes your foundation and does not comment. It goes in the file.",
+      "It will not matter for a long time. It will matter at the fifth realm, which you may not reach, which means the note may never cost you anything at all -- and that is not the same as it not being there."
+    ],
+    "never_idled": [
+      "You did not, in all of it, once do anything that was not for this.",
+      "Not once. Every day of it went somewhere, and every somewhere was up, and the ledger is complete and correct and adds to exactly what it adds to."
+    ],
+    "idled": [
+      "There was a dog behind the kitchens who liked you, some afternoons that went nowhere, a drawer of somebody else's things you never did put back properly.",
+      "None of it went in the ledger. The ledger did not have a column for it."
+    ],
+    "took_the_prize": [
+      "First Frost is in your rooms, on the wall, where you can see it from the bed.",
+      "You have taken it down eleven times. You have swung it twice. The second time your meridians were sore for a week and you told the physician you had overtrained, which was true in the way that lies are."
+    ],
+    "left_the_prize": [
+      "First Frost is in the vault with your name in the ledger beside it, which is not the same as having it.",
+      "You go and look at it sometimes. An attendant unlocks the case and stands there while you do, and neither of you says anything, and then he locks it again."
+    ]
+  }
+}

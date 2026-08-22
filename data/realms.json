@@ -1,0 +1,68 @@
+[
+  {
+    "realm": 1,
+    "name": "Body Tempering",
+    "tiers": 9,
+    "speed": 100,
+    "hp_base": 60,
+    "hp_per_tier": 6,
+    "qi_base": 20,
+    "qi_per_tier": 4,
+    "stability_max": 100,
+    "qi_to_advance_tier": 40,
+    "qi_growth_per_tier": 1.25,
+    "cultivation_yield": 14,
+    "unlocks": {
+      "affinity_manifest": false,
+      "elemental_technique": false,
+      "treasure_resonance": false,
+      "world_energy": false,
+      "insight_slots": 0
+    },
+    "flavor": "Your meridians are mud. Qi moves through you the way water moves through packed earth: slowly, and only where you have already dug."
+  },
+  {
+    "realm": 2,
+    "name": "Qi Awakened",
+    "tiers": 9,
+    "speed": 300,
+    "hp_base": 180,
+    "hp_per_tier": 22,
+    "qi_base": 90,
+    "qi_per_tier": 14,
+    "stability_max": 140,
+    "qi_to_advance_tier": 355,
+    "qi_growth_per_tier": 1.3,
+    "cultivation_yield": 56,
+    "unlocks": {
+      "affinity_manifest": true,
+      "elemental_technique": true,
+      "treasure_resonance": true,
+      "world_energy": false,
+      "insight_slots": 0
+    },
+    "flavor": "The element that was always latent in you finally has somewhere to go. Treasures stop being heavy objects and start being arguments you can win."
+  },
+  {
+    "realm": 3,
+    "name": "World-Touched",
+    "tiers": 9,
+    "speed": 900,
+    "hp_base": 540,
+    "hp_per_tier": 62,
+    "qi_base": 270,
+    "qi_per_tier": 38,
+    "stability_max": 190,
+    "qi_to_advance_tier": 1500,
+    "qi_growth_per_tier": 1.3,
+    "cultivation_yield": 150,
+    "unlocks": {
+      "affinity_manifest": true,
+      "elemental_technique": true,
+      "treasure_resonance": true,
+      "world_energy": true,
+      "insight_slots": 0
+    },
+    "flavor": "The qi stops being something you keep and starts being something you are standing in. You can draw on the room. You can also, with enough chalk and enough patience, tell the room what to do -- which is the first thing you have learned that does not care how strong you are."
+  }
+]

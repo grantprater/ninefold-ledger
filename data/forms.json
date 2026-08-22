@@ -1,0 +1,27 @@
+{
+  "_note": "Section 10. The player picks a form; materials determine everything else.",
+  "blade": {
+    "name": "Blade",
+    "category": "weapon",
+    "slots": 3,
+    "power_scale": 1.35,
+    "ward_scale": 0.2,
+    "description": "Edged. Converts material power into damage more efficiently than anything else."
+  },
+  "robe": {
+    "name": "Robe",
+    "category": "armor",
+    "slots": 3,
+    "power_scale": 0.35,
+    "ward_scale": 1.4,
+    "description": "Layered. Turns material power into standing ward instead of damage."
+  },
+  "talisman": {
+    "name": "Talisman",
+    "category": "accessory",
+    "slots": 2,
+    "power_scale": 0.7,
+    "ward_scale": 0.6,
+    "description": "Inscribed. Carries material effects more cleanly than it carries force."
+  }
+}

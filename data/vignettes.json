@@ -1,0 +1,70 @@
+{
+  "_note": "Section 01. Costs an action, yields nothing mechanical, and is counted. The count is never shown and never rewarded -- it only surfaces in the ending codas. An optimising player will never spend an action here, which is the point.",
+
+  "outer_court": {
+    "verb": "Waste an afternoon",
+    "lines": [
+      "There is a dog behind the kitchens. Nobody has named her, on the grounds that naming her would make her the sect's problem. She is enormously pleased to see you and has no opinions about cultivation whatsoever.",
+      "The dog behind the kitchens has found something dead and is extremely proud of it. You spend a while not letting her bring it inside.",
+      "You go through the drawers in the dormitory's common press, which nobody has emptied in years. Three odd gloves. A hair ornament. A letter that begins 'I am not angry' and continues for four pages in an increasingly small hand.",
+      "Somebody left a half-finished game of xiangqi on the bench by the well four days ago. You consider it for a long time. You move black's horse and go away.",
+      "The cooks let you sit in the kitchen if you shell things. You shell things. Old Tan tells you a story about a rival sect that you are fairly sure is about her sister.",
+      "You take one of the practice blades off the rack and check it against yours. It is bent slightly to the left. So is the next one. So are all of them, the same way, which means it happened at the forge and not to you.",
+      "There is a child in the outer court, maybe six, belonging to one of the cooks. She asks you to make the water do the thing. You cannot make the water do the thing. She takes this well.",
+      "The laundry line runs the length of the eastern wall and everybody's robes are identical, so the whole sect's washing looks like one enormous person. You watch it move for a while.",
+      "You reread the review notice. It has not changed. You read the names of the assessors, and the date, and the small print about travelling allowances, and then you read it again."
+    ]
+  },
+
+  "clay_terraces": {
+    "verb": "Sit on the terraces",
+    "lines": [
+      "The irrigation channels still work. Two generations abandoned and the water still goes exactly where somebody meant it to go, around and down, level after level, watering nothing.",
+      "There is a farm shrine at the third terrace, knee-high, with a stone in it worn too smooth to read. Somebody has left an orange. It is fresh.",
+      "You find a hoe head with no handle, and then the handle, twelve feet away, snapped. You spend a while working out which way the person was facing.",
+      "The birds here are not afraid of you at all, which says something about how long it has been since anyone farmed this and something else about your presence.",
+      "You lie back on the warm clay and go through the wuxing cycle in your head, generating and overcoming, over and over, the way you did when you were eleven and it was the most beautiful thing you had ever been told."
+    ]
+  },
+
+  "kiln_road": {
+    "verb": "Follow the road a while",
+    "lines": [
+      "The kilns are still warm. Forty years. You put your palm flat on the brick and hold it there until it is uncomfortable, which takes longer than you expect.",
+      "The road is paved with shards for two hundred paces -- seconds and failures, tipped out and trodden flat. You pick one up. Someone painted a heron on it, badly, and fired it anyway.",
+      "There is a name scratched into the third kiln's mouth, and under it another name, and under that a date from before your sect had this valley.",
+      "A pedlar going the other way shares his water and complains about the sect for a quarter of an hour without realising what you are. You do not tell him. It is the most honest conversation you have had in a season."
+    ]
+  },
+
+  "inner_court": {
+    "verb": "Waste an afternoon",
+    "lines": [
+      "There is no dog in the inner court. You check twice, on two separate days, and then you stop checking.",
+      "The inner court library lets you take three scrolls at a time. You take three that have nothing to do with cultivation: a survey of the valley's watercourses, somebody's travel notes from forty years ago, and a treatise on glazes.",
+      "Two of the nineteen are playing xiangqi in the covered walk and let you watch. They play a very bad, very fast, very enjoyable game and neither of them is trying to win.",
+      "You walk down to the outer court on some invented errand. The well is the same. Somebody has finally finished that game of xiangqi on the bench. Black lost.",
+      "The inner court has a bathhouse. You had not known that. You spend an hour and a half in it and speak to nobody and it is the best thing that has happened all month.",
+      "An attendant walks you through the vault inventory because you asked, and you look at forty years of prizes nobody has ever swung, racked and labelled and perfectly maintained."
+    ]
+  },
+
+  "ash_shelf": {
+    "verb": "Sit on the shelf a while",
+    "lines": [
+      "The ash goes down further than your arm. You dig until your shoulder is in it and there is still no soil.",
+      "You find a boundary marker, sect-cut, forty years weathered, standing in the middle of nothing and marking the edge of nothing.",
+      "From up here you can see the whole valley: the outer court, the terraces, the kiln road, the orchard under its water. It is not very big. It has been the entire world for six years."
+    ]
+  },
+
+  "drowned_orchard": {
+    "verb": "Stand in the water a while",
+    "lines": [
+      "The trees still fruit. Nobody eats it. You hold one for a while and put it back on the branch, which is not a thing you can do, and it falls.",
+      "There is a boat under the water, upside down, in perfectly good condition. You could right it. It would float. There is nowhere to go in it.",
+      "The silence out here is not peaceful. It is the specific silence of a place where a great many things happened at once and then stopped.",
+      "You find a shoe. You do not look for the other one."
+    ]
+  }
+}

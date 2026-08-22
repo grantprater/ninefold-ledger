@@ -1,0 +1,80 @@
+[
+  {
+    "id": "outer_court",
+    "name": "The Outer Court",
+    "travel_days": 0,
+    "settlement": true,
+    "artisans": 2,
+    "rank_range": [1, 1],
+    "spawns": [],
+    "flavor": "Dormitories, a well, a rack of practice blades, and two benches licensed to work for disciples who cannot afford the inner forge. Nothing here will try to kill you, which makes it the least interesting place you know."
+  },
+  {
+    "id": "clay_terraces",
+    "name": "The Clay Terraces",
+    "travel_days": 0,
+    "settlement": false,
+    "rank_range": [1, 1],
+    "spawns": [
+      {"family": "beast",   "affinity": "earth", "weight": 3},
+      {"family": "beast",   "affinity": "wood",  "weight": 2},
+      {"family": "serpent", "affinity": "earth", "weight": 2},
+      {"family": "serpent", "affinity": "water", "weight": 1}
+    ],
+    "flavor": "Stepped fields the sect stopped farming two generations ago. Whatever lives here is small, and used to being hunted."
+  },
+  {
+    "id": "kiln_road",
+    "name": "The Kiln Road",
+    "travel_days": 1,
+    "settlement": false,
+    "rank_range": [1, 2],
+    "spawns": [
+      {"family": "beast",   "affinity": "fire",  "weight": 3},
+      {"family": "serpent", "affinity": "fire",  "weight": 2},
+      {"family": "beast",   "affinity": "metal", "weight": 2},
+      {"family": "spirit",  "affinity": "fire",  "weight": 1}
+    ],
+    "flavor": "The road to the old porcelain kilns, still warm underfoot after forty years. Things that like heat came, and then stayed."
+  },
+  {
+    "id": "drowned_orchard",
+    "name": "The Drowned Orchard",
+    "travel_days": 2,
+    "settlement": false,
+    "rank_range": [2, 2],
+    "spawns": [
+      {"family": "spirit",  "affinity": "water", "weight": 3},
+      {"family": "spirit",  "affinity": "wood",  "weight": 2},
+      {"family": "serpent", "affinity": "water", "weight": 2},
+      {"family": "beast",   "affinity": "water", "weight": 1}
+    ],
+    "flavor": "The river took the orchard in a single spring and never gave it back. The trees are still standing. So is almost everyone who was picking."
+  },
+  {
+    "id": "inner_court",
+    "name": "The Inner Court",
+    "travel_days": 0,
+    "settlement": true,
+    "artisans": 3,
+    "requires_realm": 3,
+    "rank_range": [3, 3],
+    "spawns": [],
+    "flavor": "Colder rooms, better rice, and a forge you are allowed to stand near. Nineteen people who all did exactly what you did, waiting politely to see what you are made of."
+  },
+  {
+    "id": "ash_shelf",
+    "name": "The Ash Shelf",
+    "travel_days": 3,
+    "settlement": false,
+    "requires_realm": 3,
+    "rank_range": [2, 3],
+    "spawns": [
+      {"family": "spirit",  "affinity": "metal", "weight": 3},
+      {"family": "beast",   "affinity": "metal", "weight": 2},
+      {"family": "serpent", "affinity": "earth", "weight": 2},
+      {"family": "spirit",  "affinity": "earth", "weight": 2}
+    ],
+    "flavor": "Above the treeline the ground is grey and gives underfoot, and there is a great deal of it, and none of it is soil. The sect does not discuss what happened up here."
+  }
+]

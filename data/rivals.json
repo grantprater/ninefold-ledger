@@ -1,0 +1,22 @@
+{
+  "_note": "The rival runs the player's own progression rules on the same clock. He is not a scripted wall -- he is the branch where you spent everything on power, playing out beside you.",
+  "gu_wenshan": {
+    "name": "Gu Wenshan",
+    "affinity": {"metal": 1.0},
+    "realm": 1,
+    "tier": 6,
+    "_rate_note": "You get three actions a day for everything -- eating, hunting, people. He spends three on cultivation. The number is the characterisation.",
+    "cultivations_per_day": 3.0,
+    "intro": "You have shared a dormitory wall with Gu Wenshan for three years. In that time he has asked you two questions, both about ventilation. He is at the sixth tier, he was at the sixth tier before you were at the fourth, and the cooks say he has not eaten in the hall since spring.",
+    "news": [
+      "Somebody says Gu Wenshan has not left the eastern platform in nine days.",
+      "Gu Wenshan passes you at the well. He nods. He has a callus on his forehead from the stone.",
+      "The cooks have started leaving a bowl outside the eastern platform. It is usually still there in the morning.",
+      "Two inner disciples came down to watch Gu Wenshan circulate. They did not stay long. There is not much to watch.",
+      "Someone asks Gu Wenshan what he will do after the review. He appears not to have considered it."
+    ],
+    "breakthrough_news": "Word goes round the outer court before breakfast: Gu Wenshan broke through in the night, alone, on the eastern platform, and was back at it by the time anyone found out.",
+    "review_line_ahead": "Gu Wenshan places first. He accepts it the way you would accept a delivery.",
+    "review_line_behind": "Gu Wenshan places second. He looks at the board for a long moment, and then goes back to the eastern platform, because there is nothing else."
+  }
+}

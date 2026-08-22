@@ -1,0 +1,42 @@
+{
+  "_note": "Layer one affinities. See design doc section 05 and 06.",
+  "elements": ["fire", "water", "wood", "metal", "earth"],
+  "display": {
+    "fire":  {"name": "Fire",  "glyph": "火", "color": "red"},
+    "water": {"name": "Water", "glyph": "水", "color": "blue"},
+    "wood":  {"name": "Wood",  "glyph": "木", "color": "green"},
+    "metal": {"name": "Metal", "glyph": "金", "color": "white"},
+    "earth": {"name": "Earth", "glyph": "土", "color": "yellow"}
+  },
+  "generating": [
+    ["wood", "fire"],
+    ["fire", "earth"],
+    ["earth", "metal"],
+    ["metal", "water"],
+    ["water", "wood"]
+  ],
+  "destroying": [
+    ["wood", "earth"],
+    ["earth", "water"],
+    ["water", "fire"],
+    ["fire", "metal"],
+    ["metal", "wood"]
+  ],
+  "relation_values": {
+    "identity": 1.0,
+    "generating": 0.5,
+    "destroying": -1.0,
+    "unrelated": 0.0
+  },
+  "synergy_curve": {
+    "base": 0.2,
+    "scale": 1.3,
+    "floor": 0.0,
+    "ceiling": 1.5
+  },
+  "void": {
+    "flat_synergy": 0.6,
+    "immune_to_backlash": true,
+    "description": "The zero vector. No match with anything, no opposition to anything."
+  }
+}

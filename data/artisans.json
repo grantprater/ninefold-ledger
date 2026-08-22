@@ -1,0 +1,24 @@
+{
+  "_note": "Section 10. Village artisans generate; masters are written. This is the generator pool.",
+  "surnames": ["Ru", "Bai", "Kong", "Tan", "Wei", "Duan", "Hu", "Mo", "Yan", "Qiu"],
+  "given": ["Anzhi", "Beishu", "Cuiwen", "Deshan", "Fanglin", "Guiyan",
+            "Hexuan", "Jinlu", "Keyao", "Liansu", "Mingzhe", "Ruozhen"],
+  "titles": ["the Younger", "of the Low Ford", "Two-Kiln", "the Patient",
+             "Cold Hands", "of the Sixth Bench", "the Unlicensed"],
+  "traits": [
+    {"id": "meticulous", "name": "meticulous", "spread": -0.08, "ceiling": 0.0,
+     "line": "works slowly and will not be hurried"},
+    {"id": "bold", "name": "bold", "spread": 0.1, "ceiling": 0.12,
+     "line": "would rather ruin a piece than make a safe one"},
+    {"id": "tired", "name": "tired", "spread": 0.05, "ceiling": -0.08,
+     "line": "has been doing this a long time and it shows in the wrong way"},
+    {"id": "proud", "name": "proud", "spread": -0.03, "ceiling": 0.05,
+     "line": "signs the tang where nobody will ever see it"}
+  ],
+  "wants": [
+    "a decent core, any element, and does not want to discuss why",
+    "news from the Kiln Road, which they will not travel themselves",
+    "somebody to admit the sect's forge allocation is a disgrace",
+    "spirit stones, plainly and without ceremony"
+  ]
+}

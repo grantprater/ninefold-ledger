@@ -1,0 +1,74 @@
+[
+  {
+    "id": "shen_yaru",
+    "name": "Shen Yaru",
+    "pronouns": "she/her",
+    "affinity": {"water": 0.85, "metal": 0.15},
+    "realm": 1,
+    "tier": 3,
+    "hp_base": 52,
+    "power": 7,
+    "speed": 105,
+    "preferred_band": 1,
+    "relationship": 20,
+    "resentment": 0,
+    "decay_per_idle_day": 2.5,
+    "resent_per_idle_day": 1.75,
+    "socialize_gain": 11,
+    "socialize_resent_relief": 6,
+    "leave_threshold": 75,
+    "goal": {
+      "description": "Reach Qi Awakened before her cohort review. She is two years overdue and everyone has stopped mentioning it.",
+      "progress": 0,
+      "target": 100,
+      "progress_per_help": 14,
+      "stall_note": "She has not cultivated seriously in weeks. There has not been time, around your schedule."
+    },
+    "intro": "You pull her out of the terrace ditch by the wrist, and she is furious about it for the entire walk back — not at the beast, at the ditch, at the wrist. Later she finds you at the well and says, flatly, that she is coming with you next time, because you clearly cannot be relied upon to check your flanks. It is not gratitude. It is a professional opinion.",
+    "bands": {
+      "warm": {
+        "min_relationship": 60,
+        "lines": [
+          "\"You're holding your breath again when you channel. You've always done it. It's going to kill you one day and I'd rather it didn't.\"",
+          "She talks for a while about her mother's kiln, and the specific sound a badly-stacked firing makes right before it fails.",
+          "\"When I break through,\" she says, \"I want you there. Not to help. Just there.\""
+        ]
+      },
+      "neutral": {
+        "min_relationship": 30,
+        "lines": [
+          "She checks your bandages without asking, and complains about the knot you used.",
+          "\"Two of the inner disciples asked about you today. I said you were busy.\" A pause. \"You were busy.\"",
+          "You sit near the water together and she does not say much, and it is not uncomfortable."
+        ]
+      },
+      "cool": {
+        "min_relationship": 0,
+        "lines": [
+          "\"You want something,\" she says, before you've said anything. She's not wrong often.",
+          "She answers your questions. She does not ask any.",
+          "\"I'm cultivating,\" she says, without opening her eyes. She is not cultivating."
+        ]
+      }
+    },
+    "resentment_beats": [
+      {
+        "at": 20,
+        "line": "She mentions, lightly, that she hasn't had a clear day to cultivate since the two of you started hunting together."
+      },
+      {
+        "at": 40,
+        "line": "\"Do you know what tier I'm at?\" She waits. She lets it go on long enough that the answer becomes obvious. \"That's what I thought.\""
+      },
+      {
+        "at": 60,
+        "line": "She has stopped correcting your form. You notice this several days after she stops."
+      },
+      {
+        "at": 75,
+        "line": "\"I've been carrying your flank for four months and I am exactly where I was in spring.\" She is not shouting. It would be easier if she were shouting."
+      }
+    ],
+    "departure": "She is not at the well in the morning. Her bedroll is squared away in the corner of the outer dormitory the way it always is, and her practice blade is gone from the rack, and one of the cooks says she left before the bell with a travelling pack and did not say where. Nobody in the sect thinks this is remarkable. People leave the outer court all the time."
+  }
+]

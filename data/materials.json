@@ -1,0 +1,124 @@
+{
+  "_note": "Part definitions. Monsters drop these; crafting composes them. Section 09 and 10.",
+  "hide": {
+    "name": "Hide",
+    "slot": "body",
+    "base_value": 8,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["fire"],
+    "power": 4,
+    "effects": [],
+    "favors_forms": ["robe"]
+  },
+  "fang": {
+    "name": "Fang",
+    "slot": "body",
+    "base_value": 10,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["overkill"],
+    "power": 7,
+    "effects": [{"hook": "on_hit", "type": "bleed", "magnitude": 3}],
+    "favors_forms": ["blade"]
+  },
+  "claw": {
+    "name": "Claw",
+    "slot": "body",
+    "base_value": 9,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["overkill"],
+    "power": 6,
+    "effects": [],
+    "favors_forms": ["blade"]
+  },
+  "sinew": {
+    "name": "Sinew",
+    "slot": "body",
+    "base_value": 14,
+    "growth_bearing": true,
+    "will_bearing": false,
+    "ruined_by": ["fire"],
+    "power": 3,
+    "effects": [],
+    "favors_forms": ["blade", "robe"]
+  },
+  "scale": {
+    "name": "Scale",
+    "slot": "body",
+    "base_value": 9,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["overkill"],
+    "power": 5,
+    "effects": [{"hook": "passive", "type": "ward", "magnitude": 2}],
+    "favors_forms": ["robe"]
+  },
+  "venom_sac": {
+    "name": "Venom Sac",
+    "slot": "organ",
+    "base_value": 22,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["fire", "overkill"],
+    "power": 5,
+    "effects": [{"hook": "on_hit", "type": "poison", "magnitude": 4}],
+    "favors_forms": ["blade", "talisman"]
+  },
+  "essence": {
+    "name": "Essence",
+    "slot": "body",
+    "base_value": 16,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": [],
+    "power": 6,
+    "effects": [{"hook": "passive", "type": "qi_recovery", "magnitude": 2}],
+    "favors_forms": ["talisman"]
+  },
+  "core": {
+    "name": "Beast Core",
+    "slot": "core",
+    "base_value": 30,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["overkill"],
+    "power": 12,
+    "effects": [],
+    "favors_forms": ["blade", "robe", "talisman"]
+  },
+  "heart": {
+    "name": "Intact Heart",
+    "slot": "organ",
+    "base_value": 45,
+    "growth_bearing": true,
+    "will_bearing": false,
+    "ruined_by": ["fire", "overkill"],
+    "power": 10,
+    "effects": [{"hook": "passive", "type": "vitality", "magnitude": 6}],
+    "favors_forms": ["robe"]
+  },
+  "gallbladder": {
+    "name": "Gallbladder",
+    "slot": "organ",
+    "base_value": 40,
+    "growth_bearing": false,
+    "will_bearing": false,
+    "ruined_by": ["fire", "overkill"],
+    "power": 8,
+    "effects": [{"hook": "on_hit", "type": "poison", "magnitude": 8}],
+    "favors_forms": ["blade", "talisman"]
+  },
+  "soul_remnant": {
+    "name": "Soul Remnant",
+    "slot": "organ",
+    "base_value": 90,
+    "growth_bearing": false,
+    "will_bearing": true,
+    "ruined_by": ["overkill"],
+    "power": 9,
+    "effects": [{"hook": "passive", "type": "ward", "magnitude": 4}],
+    "favors_forms": ["blade", "talisman"]
+  }
+}
