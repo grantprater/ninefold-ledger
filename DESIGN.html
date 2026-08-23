@@ -1,0 +1,1467 @@
+<title>The Ninefold Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+  :root {
+    --ground:      #F2F4F1;
+    --surface:     #FBFCFA;
+    --surface-in:  #E9EDE9;
+    --ink:         #16201C;
+    --ink-soft:    #55605A;
+    --ink-faint:   #808B85;
+    --jade:        #2F6B52;
+    --jade-wash:   #E2ECE5;
+    --cinnabar:    #A8391F;
+    --cinnabar-wash:#F5E4DF;
+    --rule:        #D3DAD4;
+    --rule-soft:   #E3E8E3;
+
+    --f-display: "Spectral", "Iowan Old Style", Georgia, serif;
+    --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", "Cascadia Mono", Consolas, monospace;
+
+    --measure: 68ch;
+    --s1: 0.5rem;  --s2: 0.85rem; --s3: 1.4rem;
+    --s4: 2.2rem;  --s5: 3.4rem;  --s6: 5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #101613;
+      --surface:     #17201C;
+      --surface-in:  #1D2722;
+      --ink:         #E4EAE4;
+      --ink-soft:    #93A099;
+      --ink-faint:   #6E7B74;
+      --jade:        #6FBF95;
+      --jade-wash:   #1B2C24;
+      --cinnabar:    #E0765A;
+      --cinnabar-wash:#2E1B16;
+      --rule:        #26312B;
+      --rule-soft:   #1E2823;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #101613;
+    --surface:     #17201C;
+    --surface-in:  #1D2722;
+    --ink:         #E4EAE4;
+    --ink-soft:    #93A099;
+    --ink-faint:   #6E7B74;
+    --jade:        #6FBF95;
+    --jade-wash:   #1B2C24;
+    --cinnabar:    #E0765A;
+    --cinnabar-wash:#2E1B16;
+    --rule:        #26312B;
+    --rule-soft:   #1E2823;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: var(--s5) var(--s3) var(--s6);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s4);
+  }
+
+  @media (min-width: 980px) {
+    .shell {
+      grid-template-columns: 186px minmax(0, 1fr);
+      gap: var(--s5);
+      padding-top: var(--s5);
+    }
+  }
+
+  /* ---------- section rail ---------- */
+  .rail { display: none; }
+
+  @media (min-width: 980px) {
+    .rail {
+      display: block;
+      position: sticky;
+      top: var(--s4);
+      align-self: start;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+  }
+
+  .rail-title {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-bottom: var(--s2);
+    margin-bottom: var(--s2);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .rail ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+    counter-reset: rail;
+  }
+
+  .rail a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 1.75em 1fr;
+    align-items: baseline;
+    border-radius: 2px;
+  }
+
+  .rail a::before {
+    counter-increment: rail;
+    content: counter(rail, decimal-leading-zero);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+  }
+
+  .rail a:hover { color: var(--jade); }
+  .rail a:hover::before { color: var(--jade); }
+
+  a:focus-visible,
+  .rail a:focus-visible {
+    outline: 2px solid var(--jade);
+    outline-offset: 3px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: var(--s3);
+    margin-bottom: var(--s5);
+  }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin: 0 0 var(--s2);
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0 0 var(--s2);
+  }
+
+  .standfirst {
+    font-family: var(--f-display);
+    font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 54ch;
+    margin: 0 0 var(--s3);
+    text-wrap: pretty;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s1) var(--s3);
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+  }
+
+  .meta-row b {
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: var(--s5); scroll-margin-top: var(--s3); }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    align-items: baseline;
+    gap: 0 var(--s2);
+    border-top: 1px solid var(--rule);
+    padding-top: var(--s2);
+    margin-bottom: var(--s3);
+  }
+
+  .sec-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--cinnabar);
+    letter-spacing: 0.05em;
+  }
+
+  .sec-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.4vw, 1.95rem);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .sec-head p {
+    grid-column: 2;
+    margin: var(--s1) 0 0;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 58ch;
+  }
+
+  .body { max-width: var(--measure); }
+  .body > * + * { margin-top: var(--s2); }
+  .body p { margin: 0; text-wrap: pretty; }
+
+  h3 {
+    font-family: var(--f-body);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin: var(--s3) 0 var(--s1);
+    max-width: var(--measure);
+  }
+
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  .body ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .body li { padding-left: 0.2rem; }
+  .body li::marker { color: var(--jade); }
+
+  code {
+    font-family: var(--f-mono);
+    font-size: 0.875em;
+    background: var(--surface-in);
+    padding: 0.1em 0.34em;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+
+  /* ---------- formula blocks ---------- */
+  .formula {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--jade);
+    border-radius: 2px;
+    padding: var(--s3);
+    margin: var(--s3) 0;
+    overflow-x: auto;
+  }
+
+  .formula pre {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink);
+    white-space: pre;
+  }
+
+  .formula .cm { color: var(--ink-faint); }
+  .formula .hl { color: var(--jade); font-weight: 500; }
+
+  .formula-cap {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 var(--s2);
+  }
+
+  /* ---------- tables ---------- */
+  .table-wrap {
+    overflow-x: auto;
+    margin: var(--s3) 0;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+
+  th {
+    text-align: left;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: var(--s2) var(--s2);
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.7rem var(--s2);
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--ink); font-weight: 500; }
+  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .t-jade { color: var(--jade); }
+  .t-cinn { color: var(--cinnabar); }
+
+  /* ---------- callouts ---------- */
+  .note {
+    border-left: 3px solid var(--cinnabar);
+    background: var(--cinnabar-wash);
+    padding: var(--s3);
+    border-radius: 2px;
+    margin: var(--s3) 0;
+    max-width: var(--measure);
+  }
+
+  .note-label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cinnabar);
+    margin: 0 0 var(--s1);
+  }
+
+  .note p { margin: 0; }
+  .note p + p { margin-top: var(--s2); }
+
+  .note.principle {
+    border-left-color: var(--jade);
+    background: var(--jade-wash);
+  }
+
+  .note.principle .note-label { color: var(--jade); }
+
+  .note.principle ul {
+    margin: var(--s2) 0 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  .note.principle li::marker { color: var(--jade); }
+
+  blockquote {
+    margin: var(--s3) 0;
+    padding-left: var(--s3);
+    border-left: 2px solid var(--rule);
+    font-family: var(--f-display);
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+
+  blockquote p { margin: 0; }
+
+  /* ---------- act ladder ---------- */
+  .acts {
+    display: grid;
+    gap: var(--s2);
+    margin: var(--s3) 0;
+  }
+
+  @media (min-width: 720px) {
+    .acts { grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+  }
+
+  .act {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--jade);
+    border-radius: 2px;
+    padding: var(--s3);
+  }
+
+  .act:nth-child(2) { border-top-color: var(--ink-soft); }
+  .act:nth-child(3) { border-top-color: var(--cinnabar); }
+
+  .act-n {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 var(--s1);
+  }
+
+  .act h4 {
+    font-family: var(--f-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 var(--s1);
+    line-height: 1.2;
+  }
+
+  .act p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- chips ---------- */
+  .chip {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.18em 0.5em;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    vertical-align: 0.15em;
+    white-space: nowrap;
+  }
+
+  .chip-locked { color: var(--jade); background: var(--jade-wash); }
+  .chip-open   { color: var(--cinnabar); background: var(--cinnabar-wash); }
+  .chip-mvp    { color: var(--ink-soft); background: var(--surface-in); }
+
+  .sec-head .chip { margin-left: 0.5rem; }
+
+  /* ---------- ladder (cost tiers) ---------- */
+  .ladder {
+    list-style: none;
+    margin: var(--s3) 0;
+    padding: 0;
+    counter-reset: rung;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    max-width: var(--measure);
+  }
+
+  .ladder li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: var(--s2);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: var(--s3);
+  }
+
+  .ladder li::before {
+    counter-increment: rung;
+    content: counter(rung);
+    font-family: var(--f-mono);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--rule);
+    line-height: 1;
+  }
+
+  .ladder li:last-child { border-color: var(--cinnabar); }
+  .ladder li:last-child::before { color: var(--cinnabar); }
+
+  .ladder.plain li:last-child { border-color: var(--rule); }
+  .ladder.plain li:last-child::before { color: var(--rule); }
+
+  .ladder h4 {
+    font-family: var(--f-body);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .ladder p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- checklist ---------- */
+  .scope {
+    list-style: none;
+    margin: var(--s3) 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+    max-width: var(--measure);
+  }
+
+  .scope li {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: var(--s2);
+    align-items: baseline;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15px;
+  }
+
+  .scope li::before {
+    content: "\25A2";
+    color: var(--jade);
+    font-size: 13px;
+  }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: var(--s3);
+    margin-top: var(--s5);
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s1) var(--s3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+
+<div class="shell">
+
+  <nav class="rail" aria-label="Sections">
+    <div class="rail-title">Contents</div>
+    <ol>
+      <li><a href="#premise">Premise &amp; Tone</a></li>
+      <li><a href="#format">Format &amp; Tech</a></li>
+      <li><a href="#power">The Power Model</a></li>
+      <li><a href="#realms">Realms</a></li>
+      <li><a href="#affinity">Affinities</a></li>
+      <li><a href="#synergy">Synergy Math</a></li>
+      <li><a href="#overcap">Overcap Risk</a></li>
+      <li><a href="#treasures">Treasures</a></li>
+      <li><a href="#loot">Loot &amp; Economy</a></li>
+      <li><a href="#crafting">Crafting &amp; Refining</a></li>
+      <li><a href="#monsters">Monsters</a></li>
+      <li><a href="#combat">Combat</a></li>
+      <li><a href="#companions">Companions &amp; Time</a></li>
+      <li><a href="#mvp">MVP Scope</a></li>
+      <li><a href="#open">Open Threads</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="masthead">
+      <p class="eyebrow">Game Design Document &middot; Draft 04 &middot; realms 1&ndash;3 built</p>
+      <h1>The Ninefold Ledger</h1>
+      <p class="standfirst">A cultivation power fantasy that pays out exactly what it promises, then itemizes what it cost.</p>
+      <div class="meta-row">
+        <span><b>Genre</b> Xianxia deconstruction / systems RPG</span>
+        <span><b>Platform</b> Terminal, Python</span>
+        <span><b>Scale</b> Solo, modular, data-driven</span>
+      </div>
+    </header>
+
+    <!-- 01 -->
+    <section id="premise">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>Premise &amp; Tone <span class="chip chip-locked">Locked</span></h2>
+        <p>A straight power fantasy for as long as it takes the player to commit to it.</p>
+      </div>
+      <div class="body">
+        <p>The game plays the genre completely straight at first — numbers rise, breakthroughs land, companions are earned like rewards — and every system quietly keeps a receipt. The deconstruction is not delivered by dialogue or a late-game cutscene. It is delivered by the player's own optimization strategy failing on schedule.</p>
+        <p><strong>The governing rule: every critique is mechanical.</strong> If the game wants to say that hoarding power is isolating, the isolation must be a stat that moved. If it wants to say the harem trope treats people as inventory, then treating them as inventory has to produce a worse build.</p>
+      </div>
+
+      <div class="acts">
+        <div class="act">
+          <p class="act-n">Act One</p>
+          <h4>The Promise</h4>
+          <p>Genuinely satisfying progression. Reckless play is rewarded. The cautious elder is, as always, ignorable.</p>
+        </div>
+        <div class="act">
+          <p class="act-n">Act Two</p>
+          <h4>The Drift</h4>
+          <p>Numbers pass the point of legibility and abstract into tiers. Companions stop being stat-sticks and start acting on their own.</p>
+        </div>
+        <div class="act">
+          <p class="act-n">Act Three</p>
+          <h4>The Ledger</h4>
+          <p>Raw realm stops reliably deciding fights. Foundation damage surfaces. Everything the player skipped is now the thing that decides outcomes.</p>
+        </div>
+      </div>
+
+      <div class="body">
+        <h3>Why it has to be systemic</h3>
+        <p>A deconstruction delivered in text is a story the player watches. A deconstruction delivered in mechanics is a conclusion the player reaches about their own thirty hours of decisions — and can verify by reading their character sheet.</p>
+
+        <h3>The ladder</h3>
+        <p>Each realm gets an event, and the escalation is in <strong>what losing means</strong> rather than in the size of the numbers. Four arcs that are all "a ranked competition with a deadline" is one beat played four times.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Realm</th><th>Unlock</th><th>Event</th><th>Pressure</th><th>Losing means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">2</td><td>Affinity manifests</td><td><strong>Cohort Review</strong></td><td>Comparison</td><td>You fail to gain</td></tr>
+            <tr><td class="num">3</td><td>World energy, formations</td><td><strong>The Trials</strong></td><td>Contest</td><td>You lose publicly, to a person</td></tr>
+            <tr><td class="num">4</td><td>First Insight slot</td><td><strong>The Tide</strong></td><td>Defense</td><td>You lose things permanently</td></tr>
+            <tr><td class="num">5</td><td>Soul-manifest, wills negotiate</td><td><strong>The Tribulation</strong></td><td class="t-cinn">Reckoning</td><td class="t-cinn">You are capped forever</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p><strong>Realm 4 — The Tide.</strong> Defense is action economy under compression: you cannot be in two places, so you choose who gets defended, and the people you never invested in are the ones you do not reach. The genre's version has the protagonist save everyone; the arithmetic does not allow it. Losses are permanent and named — artisans whose benches you used, disciples off your own review board. Your first Insight is earned in the middle of it.</p>
+
+        <p><strong>Realm 5 — The Tribulation</strong>, and the Act Three payload. It has <strong>two independent failure modes</strong>:</p>
+        <ul>
+          <li><strong>Flawed foundation</strong> — you overcapped, you grabbed, you reached past your grasp for thirty hours and it was noted every time.</li>
+          <li><strong>Nothing to call on</strong> — you optimised. Your foundation is pristine because you never wanted anything badly enough to reach for it. You also have nobody who will cross a tribulation with you.</li>
+        </ul>
+        <p>Realm 5's own unlock is the answer to Realm 5's wall: wills become negotiable partners and companions can enter the tribulation with you — but only if those relationships were built forty hours earlier, when they cost you placements.</p>
+      </div>
+
+      <div class="note">
+        <p class="note-label">Gu Wenshan fails the second way</p>
+        <p>His foundation is perfect. He never overcapped because he never reached for anything. And he has nobody.</p>
+        <p>The player who grabbed treasures fails the first way; the player who did both fails twice; the player who split their time arrives with a mediocre foundation, real relationships, and gets through. <strong>The optimiser watches their own mirror fail the gate first.</strong></p>
+      </div>
+
+      <div class="body">
+        <h3>The harem principle: the roster is the tax</h3>
+        <p>For multiple companions, one rule carries the whole critique. A third companion does not add capacity — <strong>it subdivides the same fixed time pool.</strong> You can maintain two relationships well or five badly, and the genre presents collecting them as pure gain.</p>
+        <p>At the Realm 5 gate what matters is having <em>one</em> bond deep enough to call on. The harem player arrives with five people who like them 40% and not one who will walk into the lightning. Nothing ever says this; the arithmetic just does it. Design them with asymmetric costs — one cheap and shallow, one demanding and deep — and the optimiser picks the cheap one and finds out at the gate what they bought.</p>
+
+        <h3>Rising action: the clock starts at realm 2</h3>
+        <p><strong>Realm 1 has no time pressure at all, deliberately.</strong> It is where the player learns the systems without a cost attached to learning them. The clock starts on the breakthrough into Qi Awakened, and it arrives as one deadline laid over three things at once.</p>
+        <ul>
+          <li><strong>The rival</strong> is not a scripted wall — he runs the player's own progression maths on the same clock, spending every action on cultivation because he has nothing else to spend them on. He is the branch where you optimised purely for power, playing out beside you at full speed.</li>
+          <li><strong>The review</strong> ranks the whole cohort. Top places promote, bottom places are sent home.</li>
+          <li><strong>The companion is assessed on the same board</strong>, scored by the time you did or did not give her.</li>
+        </ul>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Daily split</th><th>Your place</th><th>Your tier</th><th>She keeps her place</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>All cultivation</td><td class="num t-jade">1st</td><td class="num">9</td><td class="num t-cinn">0%</td></tr>
+            <tr><td>2 cultivate / 1 with her</td><td class="num">2nd</td><td class="num">8</td><td class="num t-jade">100%</td></tr>
+            <tr><td>1 cultivate / 1 with her</td><td class="num">2nd</td><td class="num">5</td><td class="num t-jade">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p class="note-label">The thesis, as balance</p>
+        <p>Going all-in on power <strong>delivers exactly what the genre promises</strong> — first place, reliably, beating the rival every time. The design deliberately does not make the power-max strategy a coin flip. It works.</p>
+        <p>What it costs is never on the board. Saving her means handing the rival the top slot, and he takes it without appearing to notice. The player who optimised correctly gets the promotion, and reads her name coming down off the board on the same morning.</p>
+      </div>
+
+      <div class="body">
+        <h3>The ending the genre never writes</h3>
+        <p>The review ends the run. Being cut is not a defeat screen — <strong>nobody wronged you, there is no rival gloating, and the board was accurate.</strong> You reached the second realm, which is genuinely impressive in a market town and insufficient here, and the realms keep going upward without you for the rest of your life.</p>
+        <p>Xianxia has no interest in this outcome, and it is the median one. Every ending is a base passage plus <strong>codas</strong> selected from what the run actually cost: whether the companion is still there, whether the foundation is marked, and one more.</p>
+
+        <h3>The idle counter</h3>
+        <p>Give the player something to do that <strong>costs an action, returns nothing mechanical, and is counted.</strong> Petting the dog behind the kitchens. Going through a drawer of somebody else's things. An abandoned game of xiangqi nobody will come back to.</p>
+        <p>The counter is never displayed, never rewarded, and never hinted at. It selects between two ending codas — one for a run where every single day went somewhere, and one for a run where some of it did not:</p>
+      </div>
+
+      <blockquote>
+        <p>You did not, in all of it, once do anything that was not for this. Not once. Every day of it went somewhere, and every somewhere was up, and the ledger is complete and correct and adds to exactly what it adds to.</p>
+      </blockquote>
+
+      <div class="body">
+        <p>This is the action economy turned on the player instead of their build. A pastime that is <em>free</em> is thematically inert — everyone takes it and nothing is revealed. One that costs a third of your day and gives nothing back is a statement about what you are playing for, and an optimising player will never make it.</p>
+
+        <h3>Realm 3, built: formations and the poisoned prize</h3>
+        <p>The review becomes a <strong>gate rather than an ending</strong> — promotion continues the run into the inner court; being cut or kept ends it. Realm 3 unlocks formations, the one verb that attacks the tick economy instead of hit points. Measured over 40 seeded bouts at tier 7 against a tier 5 who counters your element:</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">What a new verb should look like</p>
+<pre>striking only       <span class="cm">0/40 wins</span>
+mesh then strike   <span class="hl">26/40 wins</span></pre>
+      </div>
+
+      <div class="body">
+        <p>Irrelevant when you already counter them, decisive when you do not, and unable to save a badly outclassed player.</p>
+        <p><strong>The prize ends Act One.</strong> First Frost is rank five, presented on a stand in front of everybody, for being excellent — and you are at the third realm. A matched build can swing it at roughly even odds and therefore will; three hundred swings takes a pristine foundation to Ruined. It is a reward and it is the trap, and the game never distinguishes between those out loud.</p>
+      </div>
+
+      <div class="note">
+        <p class="note-label">Corrected in implementation</p>
+        <p>The combat matrix was <strong>too decisive for a duel</strong>. At <code>1.45&times;</code> / <code>0.7&times;</code> the swing is 2.07&times;; it was originally <code>1.6</code> / <code>0.55</code>, a 2.9&times; swing, which is fine against a monster you chose to hunt and wrong for a bout you were drawn into — at that spread a hard-countered duel is decided before it starts and no tactic moves it, which leaves formations decorative.</p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section id="format">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2>Format &amp; Tech <span class="chip chip-locked">Locked</span></h2>
+        <p>Chosen to minimize plumbing and maximize systems work.</p>
+      </div>
+      <div class="body">
+        <ul>
+          <li><strong>Terminal / CLI, Python, no engine.</strong> Zero asset pipeline, zero engine learning curve. The format also reinforces the joke — the genre is already walls of absurd stat blocks.</li>
+          <li><strong>Data-driven from day one.</strong> Realms, monsters, techniques, treasures, and companions live in structured data files. The engine reads data; it does not hardcode content.</li>
+          <li><strong>Modularity is the point.</strong> Adding a realm, five monsters, or a companion in Phase 2 must be authoring work, not re-architecture. Anything that would require new code per content entry is a design bug.</li>
+        </ul>
+      </div>
+
+      <div class="note principle">
+        <p class="note-label">Governing principle</p>
+        <p><strong>Procedural at the bottom, hand-authored at the apex.</strong> Three systems arrived at this independently, and all three should keep it:</p>
+        <ul>
+          <li>Rank 1&ndash;4 treasures generate &mdash; rank 5+ are unique world objects with a <code>holder</code></li>
+          <li>Village artisans generate &mdash; the twelve masters are written characters</li>
+          <li>Common beasts generate &mdash; rank 5+ beasts are named entities in world state</li>
+        </ul>
+        <p>One pattern, three systems, authoring effort concentrated exactly where players form memories and tell stories.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section id="power">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2>The Power Model <span class="chip chip-locked">Locked</span></h2>
+        <p>Four orthogonal axes. No single number decides a fight.</p>
+      </div>
+      <div class="body">
+        <p>A single power stat makes builds meaningless — the bigger number wins and treasures are just addition. Splitting power across independent axes is what produces build diversity <em>and</em> gives each breakthrough something qualitative to unlock.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Axis</th><th>Type</th><th>Role</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Realm</td><td class="num">Step</td><td>The exponential gate. Crossing it is a discontinuity, not growth. Also gates which mechanics exist at all.</td></tr>
+            <tr><td>Tier</td><td class="num">Linear</td><td>Grindable progress inside a realm. Where routine cultivation and hunting pay out.</td></tr>
+            <tr><td>Affinity</td><td class="num">Vector</td><td>The build axis. Weighted elements determining skill and treasure synergy. Not a class pick.</td></tr>
+            <tr><td>Insight</td><td class="num">Discrete</td><td>Comprehension slots filled by events, not grinding. Each grants a verb, not a stat. Can beat realm.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Character shape</p>
+<pre><span class="hl">character</span> = {
+  realm:     int,
+  tier:      int,
+  affinity:  { element: weight, ... },   <span class="cm"># the build</span>
+  insights:  [ insight_id, ... ],        <span class="cm"># the identity</span>
+  treasures: [ treasure_id, ... ],
+  stability: float,                      <span class="cm"># meridian integrity</span>
+  foundation: float                      <span class="cm"># invisible until it isn't</span>
+}</pre>
+      </div>
+
+      <div class="body">
+        <p>Realm and tier alone never tell you how a fight resolves. That is the load-bearing property of the whole design — it is what lets Act Three's "power stops deciding things" turn land as a mechanic instead of an assertion.</p>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section id="realms">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h2>Realms <span class="chip chip-locked">Locked</span></h2>
+        <p>Each breakthrough unlocks a verb, not a multiplier.</p>
+      </div>
+      <div class="body">
+        <p>Breakthroughs are threshold events with real failure risk — botch the tribulation and you lose progress, gain a flaw, or worse. What makes them feel like progression rather than an idle-game milestone is that each one changes <em>what you can do</em>, not how hard you hit.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Realm</th><th>Name</th><th>Unlocks</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">1</td><td>Body Tempering</td><td>Physical technique only. No true magic. Affinity is latent and inert.</td></tr>
+            <tr><td class="num">2</td><td>Qi Awakened</td><td>Affinity manifests. Elemental skills and treasure resonance come online.</td></tr>
+            <tr><td class="num">3</td><td>World-Touched</td><td>Draw on ambient world energy, not just internal qi. Area effects, formations, arrays. <span class="chip chip-locked">built</span></td></tr>
+            <tr><td class="num">4</td><td>Concept-Bound</td><td>First Insight slot opens. Comprehension begins to outperform raw tier.</td></tr>
+            <tr><td class="num">5</td><td>Soul-Manifest</td><td>Spirit projection, split actions, remote effect. Treasure Wills become negotiable partners.</td></tr>
+            <tr><td class="num">6+</td><td class="t-cinn">&mdash;</td><td>Reality-adjacent effects. Numeric display begins abstracting into tiers.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>Unlocks are boolean flags the systems check — <code>can_use_world_energy</code>, <code>insight_slots</code> — rather than stat thresholds. Content gates by realm without new code per realm.</p>
+        <p>The realm-6 abstraction is a tone device as much as a UI one: once power passes legibility, the game stops pretending the numbers mean anything, which is precisely the observation the genre never makes about itself.</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section id="affinity">
+      <div class="sec-head">
+        <span class="sec-num">05</span>
+        <h2>Affinities <span class="chip chip-locked">Locked</span></h2>
+        <p>Two layers, so "supreme" elements never compete with build identity.</p>
+      </div>
+      <div class="body">
+        <p>Objectively superior affinities are only a problem when they sit on the same axis as build choice. The fix is to take Void, Space, and Time off that menu entirely. They are not elements — they are a separate layer that breaks rules rather than dealing damage.</p>
+
+        <h3>Layer one &mdash; affinities (your build)</h3>
+        <p>Horizontally balanced. This is where the synergy math lives.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Class</th><th>Members</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Core</td><td>Fire, Water, Wood, Metal, Earth</td><td>Wuxing generation and destruction cycles built in.</td></tr>
+            <tr><td>Derived</td><td>Lightning, Ice, Storm&hellip;</td><td>Unlock by holding both parent elements above a threshold. Immune to dilution once formed.</td></tr>
+            <tr><td>Aspect</td><td>Blood, Death, Poison, Beast</td><td>The morally costly paths. Better scaling, karma and social cost.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <h3>Layer two &mdash; fundamentals (rule-breakers)</h3>
+        <p>Not affinities. They occupy <strong>Insight slots</strong>, are acquired mid-game, and are rare. Each counters a different <em>system</em> rather than a damage type — which is exactly why the setting calls them supreme, since they are the only things that touch the realm gap at all.</p>
+        <ul>
+          <li><strong>Space</strong> &mdash; counters engagement. Escape anything, reach anything, control distance and formations.</li>
+          <li><strong>Time</strong> &mdash; counters action economy. Extra actions, rewinds. Strongest, rarest, costliest.</li>
+          <li><strong>Void</strong> &mdash; counters the affinity system itself.</li>
+        </ul>
+        <p>Because they live in the insight track, everyone can eventually reach this layer and it never competes with elemental identity. Build diversity stays entirely in layer one.</p>
+
+        <h3>Void, specifically</h3>
+        <p>Void is the <strong>zero vector</strong> — not a special case in the data model, but the absence of one. It ignores the relation matrix entirely and takes a flat <code>~0.6&times;</code> with everything, immune to backlash.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Metric</th><th>Fire specialist</th><th>Void</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Average on random loot</td><td class="num t-jade">0.64&times;</td><td class="num">0.60&times;</td></tr>
+            <tr><td>Floor</td><td class="num t-cinn">0.00&times;</td><td class="num t-jade">0.60&times;</td></tr>
+            <tr><td>Dead items held</td><td class="num t-cinn">2 in 5</td><td class="num t-jade">none</td></tr>
+            <tr><td>Overcap on unmatched rank+2</td><td class="num t-cinn">0.50&times; control</td><td class="num t-jade">1.10&times; control</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p class="note-label">Corrected in implementation</p>
+        <p>This section originally claimed Void wins late because <em>breadth compounds</em> — higher average yield across many slots. Measured, that is false: <strong>with only the five wuxing elements there are no unrelated pairs</strong>, so the <code>0.2</code> floor never fires and a specialist averages <code>0.64&times;</code> on random loot, beating Void's flat <code>0.6&times;</code>.</p>
+        <p>Void's real edge is its <strong>floor</strong>. A specialist holds a completely dead item 2 times in 5; Void never does, and never suffers backlash. That is what matters for uniques whose element you cannot choose, and for overcap reach — a specialist can only safely reach past their realm with <em>matched</em> gear, which is rare at high rank precisely because uniques are authored rather than farmed.</p>
+        <p>The arc still lands the way Act One needs it to. Early game, every NPC insists Void is the supreme protagonist affinity while the arithmetic quietly punishes you for believing them.</p>
+      </div>
+
+      <div class="note">
+        <p class="note-label">Where the deconstruction lands</p>
+        <p>Each fundamental taxes the <strong>relationship</strong> system. <strong>Time</strong> burns lifespan. <strong>Space</strong> means you are never <em>here</em>, so companion bonds decay faster. <strong>Void</strong> erodes identity, lowering relationship capacity outright — you become less legible as a person.</p>
+        <p>The three affinities that best solve the exponential realm gap are the three that hollow out the thing Act Three reveals actually mattered. The player who optimizes hardest for power arrives at the ending most alone, having done it entirely with numbers displayed on screen the whole time.</p>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section id="synergy">
+      <div class="sec-head">
+        <span class="sec-num">06</span>
+        <h2>Synergy Math <span class="chip chip-locked">Locked</span></h2>
+        <p>One formula, with the elemental cycles baked into a matrix.</p>
+      </div>
+      <div class="body">
+        <p>Give the wuxing relations a matrix <code>R</code> — <code>+1</code> same, <code>+0.5</code> generating, <code>-1</code> destroying, <code>0</code> unrelated — and genre-accurate behavior falls out of a single cosine-similarity expression for free.</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Treasure effectiveness</p>
+<pre><span class="hl">match</span>     = Σᵢⱼ (Aᵢ/|A|₁) × Rᵢⱼ × (Tⱼ/|T|₁)     <span class="cm"># ∈ [-1, 1]</span>
+<span class="hl">synergy</span>   = clamp(0.2 + 1.3 × match, 0, 1.5)
+<span class="hl">effective</span> = base_power
+          × realm_scalar(realm, treasure.rank)
+          × synergy</pre>
+      </div>
+
+      <div class="note">
+        <p class="note-label">Corrected in implementation</p>
+        <p>This was originally specified as cosine similarity, which is wrong for this matrix. Because <code>R</code> has positive off-diagonal entries, cosine lets <code>match</code> exceed 1.0 — a fire/wood 50/50 build scored <em>higher</em> with a fire blade than a pure fire build did, since wood feeds fire. That deletes the dilution tradeoff entirely and makes fire+wood a free lunch.</p>
+        <p><strong>L1 weighting fixes it.</strong> Match becomes the weighted average relation of your affinity mix to the treasure, so every dilution costs something — and diluting toward a generating element costs roughly <strong>4&times; less</strong> than diluting toward a destroying one, which is a better decision space than cosine offered.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Character</th><th>Treasure</th><th>Relation</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pure Fire</td><td>Fire blade</td><td>Identity</td><td class="num t-jade">1.5&times;</td></tr>
+            <tr><td>Wood</td><td>Fire blade</td><td>Generating</td><td class="num">~0.85&times;</td></tr>
+            <tr><td>Unrelated</td><td>Any</td><td>Orthogonal</td><td class="num">0.2&times;</td></tr>
+            <tr><td>Water</td><td>Fire blade</td><td>Destroying</td><td class="num t-cinn">0&times; + backlash</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>Two consequences worth protecting:</p>
+        <ul>
+          <li><strong>Loot is near-junk to the wrong build.</strong> That is a feature — it makes treasure hunting build-directed and creates a real player economy.</li>
+          <li><strong>Dilution is a genuine tradeoff, for free.</strong> Adding a second element lowers normalized alignment with your first. "Do I accept this Lightning affinity?" becomes a real decision, and derived affinities are the reward for taking the risk.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section id="overcap">
+      <div class="sec-head">
+        <span class="sec-num">07</span>
+        <h2>Overcap Risk <span class="chip chip-locked">Locked</span></h2>
+        <p>Reaching past your realm costs control, not power.</p>
+      </div>
+      <div class="body">
+        <p>If high-rank gear simply deals less damage, it is a worse item and nobody is tempted. If it delivers full absurd damage and you cannot aim it, you get the actual genre beat: the kid holding a sword that really can split the mountain, and really might split him.</p>
+        <p>That reframes overcap from an efficiency loss into a <strong>variance trade</strong> — and variance is strategically correct when you are losing. Players will reach for overcap exactly when the realm gap is crushing them, which is the genre's signature move, and the math will agree with them.</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">The curve</p>
+<pre><span class="hl">gap</span>     = treasure.rank - character.realm
+<span class="hl">power</span>   = base × 5^gap        <span class="cm"># full power, always</span>
+<span class="hl">control</span> = 0.45^gap            <span class="cm"># ...but your grip collapses</span></pre>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Gap</th><th>Power</th><th>Control</th><th>Feel</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">0</td><td class="num">&times;1</td><td class="num t-jade">100%</td><td>Your weapon. Deterministic.</td></tr>
+            <tr><td class="num">+1</td><td class="num">&times;5</td><td class="num">45%</td><td>Risky edge. Viable with support.</td></tr>
+            <tr><td class="num">+2</td><td class="num">&times;25</td><td class="num">20%</td><td>Desperate gambit.</td></tr>
+            <tr><td class="num">+3</td><td class="num">&times;125</td><td class="num t-cinn">9%</td><td>Suicide with a lottery ticket attached.</td></tr>
+            <tr><td class="num">+5</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td><strong>Hard cap.</strong> Cannot activate. You can carry it, and want to.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>Expected value <em>rises</em> with gap, so overcap is never strictly wrong — but backlash severity scales with the treasure's power, so the downside rises just as fast. Use the formula for architecture; make it table-overridable per rank so the steps can be hand-tuned later.</p>
+        <h3>What raises control</h3>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Control modifiers</p>
+<pre><span class="hl">effective_control</span> =
+    base_control
+  × (0.5 + synergy)      <span class="cm"># affinity match — "this is MY sword"</span>
+  + <span class="hl">will_disposition</span>     <span class="cm"># sentient treasures choose</span>
+  + insight_bonus        <span class="cm"># comprehension over realm</span>
+  × stability_factor     <span class="cm"># current meridian integrity</span></pre>
+      </div>
+
+      <div class="body">
+        <p>The <code>will</code> term is the important one. For sentient treasures, overcap is not a dice roll against physics — it is a <strong>negotiation</strong>. A legendary blade will let a weak wielder swing it if it likes them, or wants something from them.</p>
+        <p>So there are two routes past the realm gap: <strong>gamble with variance</strong>, or <strong>build a relationship</strong>. A player who treats every treasure as a resource to be extracted only ever gets the first one. The same lesson as the companion system, arrived at through loot.</p>
+
+        <h3>The cost ladder</h3>
+      </div>
+
+      <ol class="ladder">
+        <li>
+          <div>
+            <h4>Stability &mdash; meridian integrity</h4>
+            <p>Drains on every overcap use, success included. Slow to recover, and low stability lowers control further. The real limiter: you can overcap, just not repeatedly. Death spirals are possible and dramatic.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Injuries &amp; flaws</h4>
+            <p>Persistent traits from bad backlash. <em>Cracked Meridian: &minus;20% qi recovery.</em> They accumulate and need rare treasures or long recovery to clear — which sends you hunting, which tempts you to overcap.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Foundation damage</h4>
+            <p>Permanent, and it does not touch your stats at all. It degrades <strong>breakthrough odds at future realms</strong>. Invisible in Act One by design.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="note">
+        <p class="note-label">Act Three payload</p>
+        <p>Tier three is the deconstruction, mechanized. Foundation damage moves nothing in Act One — you are punching above your weight and it is <em>awesome</em>. Then at the Realm 5 tribulation, a player who spent the early game gambling discovers their foundation is compromised and they <strong>cannot break through</strong>. Permanently capped, by choices the game rewarded forty hours earlier.</p>
+      </div>
+
+      <blockquote>
+        <p>The elder frowns at your meridians. "You've been reaching past your grasp. Your foundation is flawed."</p>
+      </blockquote>
+
+      <div class="body">
+        <p>Every xianxia protagonist ignores the cautious elder, and every xianxia protagonist is right to. Here they are wrong. The character sheet has read <code>Foundation: Flawed</code> for thirty hours, and nobody read it, because the genre trained them not to. The deconstruction lands without a single cutscene.</p>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section id="treasures">
+      <div class="sec-head">
+        <span class="sec-num">08</span>
+        <h2>Treasures <span class="chip chip-locked">Locked</span></h2>
+        <p>One schema. Variety comes from combination, not bespoke code.</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Treasure schema</p>
+<pre>{
+  id, name, <span class="hl">rank</span>,
+  category,                 <span class="cm"># weapon / armor / accessory / core / material</span>
+  <span class="hl">affinity_tags</span>: { element: weight, ... },
+  effects: [ { hook, magnitude, condition } ],
+  <span class="hl">growth</span>: null | { xp, stages: [...] },
+  <span class="hl">will</span>:   null | { disposition, demands: [...] }
+}</pre>
+      </div>
+
+      <div class="body">
+        <h3>Authoring tiers</h3>
+        <p>Tier the authoring effort so only what deserves hand-writing gets hand-written.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Rank</th><th>Generation</th><th>Scarcity</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">1&ndash;2</td><td>Fully procedural from material inputs</td><td>Infinite. Zero authoring.</td></tr>
+            <tr><td class="num">3&ndash;4</td><td>Named templates with variable rolls</td><td><em>A</em> Frostfang Blade. Several exist.</td></tr>
+            <tr><td class="num">5+</td><td class="t-cinn">Hand-authored, world-unique</td><td>Exactly one exists. Tracked in world state.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>That top tier is an architecture decision, not just a content one: uniques need a <code>holder</code> field and live in <strong>world state</strong>, not in a loot table. There are twelve rank-5 treasures in the world; each is <em>somewhere</em>, and if you do not have it, a named NPC does. It can be won at auction, negotiated for, or taken off their body.</p>
+
+        <h3>The loyalty counterpoint</h3>
+        <p>The <code>growth</code> field is the counterweight to overcap's "grab everything shiny" pull. A rank-1 blade carried since the tutorial can, with investment, outperform the rank-4 artifact looted last week. It is genre-authentic, emotionally satisfying, and thematically identical to the companion argument: <strong>the thing you stayed with outperforms the thing you grabbed.</strong></p>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section id="loot">
+      <div class="sec-head">
+        <span class="sec-num">09</span>
+        <h2>Loot &amp; Economy <span class="chip chip-locked">Locked</span></h2>
+        <p>Monsters do not drop treasures. Monsters drop monster.</p>
+      </div>
+      <div class="body">
+        <p>That single rule kills the randomness problem. A fire-affinity rank-2 wolf dropping fire-wolf materials is completely consistent; that same wolf dropping a sword never is. Treasures get <em>made</em> from monster.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th>Materials</th><th>Treasures</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Source</td><td>Harvested, farmed, table-driven</td><td>Crafted, bought, taken</td></tr>
+            <tr><td>Fungible</td><td>Yes &mdash; stackable, tradeable</td><td>No</td></tr>
+            <tr><td>Volume</td><td>High</td><td>Low</td></tr>
+            <tr><td>Randomness</td><td>Quality varies, existence does not</td><td>Authored or player-directed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <h3>Anatomy is the loot table</h3>
+        <p>Derived from the monster's own stats rather than hand-written per creature:</p>
+        <ul>
+          <li><strong>Core</strong> &mdash; always present. Rank and affinity inherited from the monster. The universal currency.</li>
+          <li><strong>Body parts</strong> &mdash; scale, claw, hide, bone, sinew, blood. Each carries the monster's affinity.</li>
+          <li><strong>Rare organ</strong> &mdash; heart, marrow, eye. Low chance, high value. The only real drop-roll in the system.</li>
+        </ul>
+
+        <h3>How you kill it matters</h3>
+        <p>The same corpse yields differently depending on kill method, harvesting skill, and time spent. Burn a beast and the hide is ruined; precise kills preserve organs. This produces a real tactical tension — <strong>your best element is often the one that destroys the drops</strong> — and makes combat decisions matter past winning. Harvesting properly also spends from the daily action pool.</p>
+
+        <h3>The economy writes itself</h3>
+        <p>A freebie from the <code>R</code> matrix: <strong>you cannot efficiently farm your own element.</strong> Fire beasts resist Fire, so a Fire cultivator hunting Fire materials fights at a structural disadvantage — while slaughtering Water beasts effortlessly and collecting Water materials they can barely use.</p>
+        <p>Everyone efficiently farms exactly what they cannot use. Trade becomes structurally necessary rather than a bolted-on shop, and "I need Frost Marrow, that is rank-3 ice beasts in the Northern Reach, four-day trip" is a <strong>quest the material system generates for free</strong> — enormously valuable for a solo developer who cannot hand-write hundreds of them.</p>
+
+        <h3>Acquisition channels</h3>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Channel</th><th>Carries</th><th>Character</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Harvest</td><td>Materials</td><td>Volume. Gated by combat skill, harvesting, and time.</td></tr>
+            <tr><td>Shops</td><td>Materials, low-rank goods</td><td>Reliable, overpriced, deliberately boring. The safe floor.</td></tr>
+            <tr><td>Auctions</td><td>Rare treasures</td><td>Scarce and contested &mdash; NPCs bid, you can lose. Also how you learn what exists.</td></tr>
+            <tr><td class="t-cinn">Theft &amp; bodies</td><td>Uniques</td><td>Where the best gear actually moves. And the moral channel.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p class="note-label">The Will remembers</p>
+        <p>Xianxia protagonists murder rivals and pocket their gear constantly, framed as unremarkable. Give it teeth: a sentient artifact taken off a corpse carries a permanent <code>will_disposition</code> penalty toward you, which feeds straight into the overcap control formula in &sect;07.</p>
+        <p>Murdered-for treasures grant <strong>less control when overcapping</strong> — the gear you took the shortcut for is precisely the gear that will not cooperate when you are desperate. Stolen power fails you at the exact moment the genre promises it will save you. No sermon required; it is just the numbers.</p>
+      </div>
+
+      <div class="body">
+        <p>Net result: randomness survives only in rare-organ rolls, material quality, and auction competition. Everything else is authored or player-directed.</p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section id="crafting">
+      <div class="sec-head">
+        <span class="sec-num">10</span>
+        <h2>Crafting &amp; Refining <span class="chip chip-locked">Locked</span></h2>
+        <p>Composition, not recipes. The craft itself has to contain the decision.</p>
+      </div>
+      <div class="body">
+        <p>Crafting systems usually fail for one reason: they are <strong>recipe lookup</strong>. Gather X, press button, receive Y. The only decision happened when you chose to gather X, so the craft is either trivial or, repeated, grind. Minigames do not fix this — they add interaction without adding decision, and a terminal forecloses them anyway.</p>
+        <p>So there are no recipes. The player picks a <strong>form</strong> — blade, robe, ring, talisman — and feeds materials into it. Everything else derives.</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Craft resolution</p>
+<pre><span class="hl">affinity_tags</span> = normalize(Σ mat.affinity × mat.quality × qty)
+<span class="hl">rank</span>          = f(highest_rank_input, total_quality)
+<span class="hl">effects</span>       = union of material hooks    <span class="cm"># venom sac → on_hit poison</span>
+<span class="hl">growth</span>        = if any input is growth-bearing
+<span class="hl">will</span>          = only from intact soul-bearing material</pre>
+      </div>
+
+      <div class="body">
+        <p>No recipe database to author, infinite variety from finite materials, and the player already reads the math because &sect;06 taught it to them.</p>
+
+        <h3>The decision: sharp or strong</h3>
+        <p>Two axes fight, and this tension is the entire game of crafting.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th>Purity</th><th>Potency</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Method</td><td>Few materials, one element</td><td>More and rarer materials, higher rank</td></tr>
+            <tr><td>Gains</td><td class="t-jade">High synergy, up to 1.5&times;</td><td class="t-jade">High base power</td></tr>
+            <tr><td>Costs</td><td class="t-cinn">Lower base power</td><td class="t-cinn">Diluted vector, synergy collapses</td></tr>
+            <tr><td>Wanted by</td><td>Specialists</td><td>Void cultivators</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>That last row is a free gift from &sect;05: Void ignores affinity match entirely, so <strong>Void cultivators are the natural buyers of powerful, muddied gear that every specialist considers ruined.</strong> The economy deepens without new systems.</p>
+
+        <h3>The crafter shapes variance, not the mean</h3>
+        <p>Crafting always produces something — losing materials outright is pure feel-bad. What varies is quality, rolled on a distribution, and the crafter shapes that distribution.</p>
+        <ul>
+          <li><strong>Low skill</strong> &mdash; wide spread, low ceiling. You get an item; you do not get a good one.</li>
+          <li><strong>High skill</strong> &mdash; narrow spread, high ceiling.</li>
+          <li><strong>Master, well-disposed</strong> &mdash; can exceed the normal ceiling. <em>Inspired work.</em></li>
+        </ul>
+        <p>Same materials, different hands, genuinely different outcome. That is what makes crafter relationships load-bearing rather than decorative.</p>
+
+        <h3>Crafter NPCs</h3>
+        <p>Split by the governing principle in &sect;02. <strong>Village artisans generate</strong> — every settlement rolls two to four from a template with craft type, skill, affinity specialty, a personality trait, and a want. They are services, and fungible. <strong>Masters are written</strong> — eight to twelve exist in the world, each with history, a reason to refuse you, and something they want.</p>
+        <p>Masters are not vendors with a skill check. They refuse you initially, and they <strong>judge your materials' provenance</strong>: a master who reveres beasts will not work with something you tortured, and one with scruples will not touch a component stripped off a corpse. Combat method chains into harvest quality chains into crafting access.</p>
+      </div>
+
+      <div class="note">
+        <p class="note-label">The spine</p>
+        <p>Companions, treasure Wills, and crafters are <strong>the same mechanic on three surfaces</strong>: instrumentalize me and I resist. One system to build, three places it pays off.</p>
+        <p>If a master crafter is romanceable, the genre's version is "acquire blacksmith waifu, receive free legendary gear forever." Here she has expectations — time, presence, reciprocity — and treating her as a gear vending machine drives the same resentment stat companions use, which closes off inspired work. The best gear in the game is gated behind not doing the thing the genre trains you to do.</p>
+      </div>
+
+      <div class="body">
+        <h3>Anti-grind constraints</h3>
+        <p>Three hard rules that kill the iron-ingot problem outright.</p>
+      </div>
+
+      <ol class="ladder plain">
+        <li>
+          <div>
+            <h4>No intermediate materials</h4>
+            <p>No ore &rarr; ingot &rarr; bar. Monster part goes straight into treasure. The only refinement step is <em>purification</em> &mdash; spending days to raise a material's quality, which is an action-economy trade rather than a chore.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Crafting is rare, not routine</h4>
+            <p>Three or four significant items per realm. The daily action pool enforces it: crafting costs days, so every craft is an event.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>No bulk consumables</h4>
+            <p>Pills and talismans are bought from shops. Crafting is for treasures only, which removes the repetition vector entirely.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="body">
+        <h3>Refining &mdash; the second life</h3>
+        <p>Refining improves what you already carry, and it is where <code>growth</code> becomes something you <em>do</em> rather than something that accrues:</p>
+        <ul>
+          <li>Feed materials to a growth-capable treasure to advance a stage</li>
+          <li><strong>Re-forge</strong> to shift an existing item's affinity vector &mdash; expensive, risky, can ruin it</li>
+          <li>Repair damage and clear flaws</li>
+        </ul>
+        <p>This makes the loyalty counterpoint in &sect;08 real. Investing in the tutorial blade means forge trips and materials you chose not to spend elsewhere — an actual commitment, which is what makes it land when it outperforms the looted artifact.</p>
+
+        <h3>Self-crafting is the isolation build</h3>
+        <p>The player can craft personally, starting unskilled and improving with time investment. Since time is the scarce resource, self-sufficiency costs cultivation days and realm progress.</p>
+        <p>It is a real build choice, and it is the theme on a third surface: <strong>the player who wants to need nobody can do exactly that</strong>, and pays in realm and in relationships. They reach the endgame competent, independent, and alone — having chosen it one forge visit at a time.</p>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section id="monsters">
+      <div class="sec-head">
+        <span class="sec-num">11</span>
+        <h2>Monsters <span class="chip chip-locked">Locked</span></h2>
+        <p>A bestiary that composes instead of one that gets written.</p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Monster composition</p>
+<pre><span class="hl">monster</span> = Family × Affinity × Rank × Region
+
+Family    → anatomy, combat role, stat shape
+Affinity  → damage, resistance, material element
+Rank      → scale
+Region    → flavor and an optional modifier trait</pre>
+      </div>
+
+      <div class="body">
+        <p><code>Fire × Serpent × Rank 2</code> is fully determined and completely logical: fire serpent parts, serpent tactics. Eight families across nine affinities and six ranks yields hundreds of coherent monsters from one small table.</p>
+        <p>Critically, <strong>each family is the origin of a material property the crafting system needs</strong> — which is where <code>growth</code> and <code>will</code> actually come from.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Family</th><th>Combat role</th><th>Key materials</th><th>Feeds</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Beast</td><td>Fast, aggressive, packs</td><td>Hide, fang, <strong>sinew</strong></td><td class="t-jade"><code>growth</code></td></tr>
+            <tr><td>Serpent</td><td>Evasive, venom, big single hits</td><td>Scale, <strong>venom sac</strong></td><td>Effect hooks</td></tr>
+            <tr><td>Avian</td><td>Very high tick rate, fragile, Far band</td><td>Feather, talon, <strong>keen eye</strong></td><td>Perception</td></tr>
+            <tr><td>Insectoid</td><td>Armored, swarms, numbers</td><td><strong>Carapace</strong>, gland</td><td>Armor forms</td></tr>
+            <tr><td>Plant</td><td>Stationary, area denial, regen</td><td><strong>Heartwood</strong>, spore, sap</td><td class="t-jade"><code>growth</code></td></tr>
+            <tr><td>Spirit</td><td>Incorporeal, ignores physical, drains</td><td>Essence, <strong>soul remnant</strong></td><td class="t-cinn"><code>will</code></td></tr>
+            <tr><td>Construct</td><td>Huge defense, very slow, status-immune</td><td><strong>Mineral, core shard</strong></td><td>Potency crafting</td></tr>
+            <tr><td>Draconic</td><td>Apex, all-rounder</td><td>Everything, high quality</td><td>Rank 4+ only</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="body">
+        <p>Sentient treasures now have a specific origin: <strong>you have to hunt spirits for soul remnants.</strong> An entire content pillar fell out of the taxonomy for free, and it means the players who want negotiating partners for overcap (&sect;07) have somewhere specific to go.</p>
+
+        <h3>Against sameness</h3>
+        <ul>
+          <li><strong>Attachable traits</strong> &mdash; a small pool (<em>Ancient, Starving, Twin-Cored, Corrupted</em>) that changes behavior and loot together, not just numbers.</li>
+          <li><strong>Family &times; affinity genuinely diverges.</strong> A Fire Avian (fast, burning, holds Far) and an Earth Construct (slow, unkillable, must be out-damaged) share no tactics at all despite coming from the same generator.</li>
+        </ul>
+
+        <h3>Killing well vs. looting well</h3>
+        <p>The tension from &sect;09 gets concrete: fire ruins hide, overkill shatters the core, precise low-damage kills preserve organs. Meanwhile every extra round spent being careful is more ticks the monster gets to act. <strong>Fighting well and looting well are opposed</strong>, and &sect;12 makes the cost of carefulness legible in the same currency as the fight.</p>
+
+        <h3>Where the harvest decision lives</h3>
+        <p>Harvesting costs from the daily action pool, but the <em>choice</em> belongs at the kill, not on the day menu &mdash; filed away as a separate errand it severs the link between how you fought and what you get, and it invites players to bank corpses. Offer three options over the body, with what the fight already ruined named up front:</p>
+        <ul>
+          <li><strong>Strip the core and move on</strong> &mdash; free, core-slot parts only, but guaranteed</li>
+          <li><strong>Take it apart properly</strong> &mdash; costs an action, full anatomy roll at full care</li>
+          <li><strong>Leave it</strong> &mdash; free, nothing</li>
+        </ul>
+        <p>This keeps the action-economy cost that makes harvesting compete with cultivating, while turning it into a live judgement: a rank-1 wolf is rarely worth a third of your day, and an Ancient Twin-Cored one always is.</p>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section id="combat">
+      <div class="sec-head">
+        <span class="sec-num">12</span>
+        <h2>Combat <span class="chip chip-locked">Locked</span></h2>
+        <p>Tick-based, so the realm gap is felt as frequency rather than damage.</p>
+      </div>
+      <div class="body">
+        <p>Turn-based is correct for the architecture, but strict alternating turns is the wrong flavor. Give every combatant a speed stat and every action a <strong>time cost</strong>; whoever has the lowest accumulated time acts next. Roguelikes have used this energy model for decades and it is barely harder to build.</p>
+        <p>The payoff is that <strong>the realm gap becomes action frequency.</strong></p>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">The gap, felt</p>
+<pre>Realm +1 enemy  →  acts <span class="hl">~3×</span> per your action
+Realm +2 enemy  →  acts <span class="hl">~9×</span> per your action</pre>
+      </div>
+
+      <div class="body">
+        <p>"This enemy hits for 40,000" is a number. Watching something take five actions before you take one is <em>terror</em> — and it is precisely what the genre means when it calls a realm gap unbridgeable. Not that they hit harder, but that you cannot react.</p>
+        <p>It also gives Time affinity something granular to manipulate. If turns are atomic, "extra action" is a blunt instrument; with variable time costs, Time can shave costs, act out of sequence, or steal ticks outright.</p>
+
+        <h3>Structure</h3>
+        <ul>
+          <li><strong>Range bands, not a grid</strong> &mdash; Close / Mid / Far. Moving costs time; techniques have band requirements. Cheap in a terminal, gives Space affinity a surface to break, and makes Avians play unlike Constructs.</li>
+          <li><strong>A tight action menu</strong> &mdash; <code>Strike &middot; Technique &middot; Treasure &middot; Move &middot; Steady &middot; Flee</code>. <em>Steady</em> recovers stability, which matters because of &sect;07.</li>
+        </ul>
+
+        <h3>Beating something above your realm</h3>
+        <p>Act Three requires that raw power stops deciding fights, so the alternatives have to be real mechanics present from the start.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Route</th><th>Mechanic</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Overcap</td><td>The variance gamble (&sect;07)</td></tr>
+            <tr><td>Insight</td><td>Verbs that bypass rules &mdash; Space escapes, Time steals ticks</td></tr>
+            <tr><td>Formations</td><td>Realm 3 unlock &mdash; slow, trap, or split the enemy's ticks</td></tr>
+            <tr><td>Affinity</td><td>The <code>R</code> matrix; the correct counter-element does real work</td></tr>
+            <tr><td>Preparation</td><td>Ambush, poisons, terrain &mdash; sourced from harvesting knowledge</td></tr>
+            <tr><td class="t-jade">Companions</td><td class="t-jade">More bodies means more actions</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="formula">
+        <p class="formula-cap">Action economy</p>
+<pre>Alone vs Realm+1:          <span class="cm">1 action per its 3</span>
+With 3 loyal companions:   <span class="hl">4 actions per its 3</span></pre>
+      </div>
+
+      <div class="note">
+        <p class="note-label">The thesis, as combat math</p>
+        <p>In a tick system allies are <em>literally</em> action economy. The power fantasy says <strong>get stronger</strong>. The math says <strong>do not be alone</strong>.</p>
+        <p>And it is not a special case bolted on for the theme — it is simply how the system works. Companions who resent you fight sloppily, arrive late, or do not come at all, so a player who collected them as trophies has bodies but not actions. The harem critique resolves in the initiative order.</p>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section id="companions">
+      <div class="sec-head">
+        <span class="sec-num">13</span>
+        <h2>Companions &amp; Time <span class="chip chip-mvp">Needs detail</span></h2>
+        <p>The scarcity that makes the harem trope into a real tradeoff.</p>
+      </div>
+      <div class="body">
+        <p><strong>The time economy is the load-bearing piece.</strong> A limited pool of daily actions splits across cultivating, exploring, harvesting, and socializing. Power-fantasy protagonists have infinite time for everything; making time genuinely scarce is what turns companions from free rewards into opportunity cost.</p>
+        <p>Each companion carries a relationship stat <strong>and</strong> an autonomy/resentment stat. Under-invested companions do not sit idle waiting to be collected — they act. They leave, they resent, they undermine, and they can take techniques and secrets with them.</p>
+        <p>This is the same argument the treasure Will system makes, which is the point: <strong>things you try to purely instrumentalize resist you.</strong> Both systems must exist in the MVP, even minimally, or the Act Three turn has nothing to land on.</p>
+        <p><strong>&sect;12 is what gives this section teeth.</strong> Companions are action economy, so relationship investment is not a side activity competing with power — past a certain realm gap it <em>is</em> the power. What still needs specifying: the resentment curve, what companions do autonomously when neglected, and the roster itself.</p>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section id="mvp">
+      <div class="sec-head">
+        <span class="sec-num">14</span>
+        <h2>MVP Scope <span class="chip chip-locked">Built</span></h2>
+        <p>Small enough to finish, complete enough to prove every loop end to end.</p>
+      </div>
+
+      <div class="note principle">
+        <p class="note-label">Status</p>
+        <p><strong>Built and playable.</strong> Python 3.14, no dependencies, all content data-driven. Three test suites cover the synergy math, every system headless, and a scripted 40-day integration run.</p>
+        <p>Two design claims did not survive implementation and are corrected in &sect;05 and &sect;06 — the synergy formula's normalization, and what Void's advantage actually is.</p>
+      </div>
+
+      <ul class="scope">
+        <li>Realm 1, plus the breakthrough into Realm 2 &mdash; the "physical only &rarr; affinity awakens" qualitative jump</li>
+        <li>4&ndash;5 core affinities with the full <code>R</code> matrix and synergy formula</li>
+        <li>3 monster families &times; 3 affinities, with anatomy-derived material tables</li>
+        <li>5&ndash;8 treasures exercising synergy, overcap, growth, and at least one <code>will</code></li>
+        <li>Tick-based combat with range bands and the realm-gap frequency curve</li>
+        <li>Daily action allocation loop covering cultivate / hunt / harvest / craft / socialize</li>
+        <li>Composition crafting with one procedural village artisan</li>
+        <li>One fully realized companion with a personal arc and working resentment</li>
+        <li>Stability and foundation tracked and displayed from day one, even before they bite</li>
+      </ul>
+      <div class="body">
+        <p>Everything above lives in data files. Phase 2 ("add a realm", "add five monsters", "add a companion") must be authoring work, not engineering work — that constraint is what makes the full-game ambition survivable solo.</p>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section id="open">
+      <div class="sec-head">
+        <span class="sec-num">15</span>
+        <h2>Open Threads <span class="chip chip-open">Next</span></h2>
+        <p>Designed but not yet specified.</p>
+      </div>
+      <div class="body">
+        <ul>
+          <li><strong>Insight acquisition</strong> &mdash; what comprehension events look like, how they are triggered, and how the three fundamentals are found. The least specified system carrying the most Act Three weight.</li>
+          <li><strong>Companion specifics</strong> &mdash; the resentment curve, autonomous behaviour when neglected, and the roster itself.</li>
+          <li><strong>Tribulation mechanics</strong> &mdash; how breakthrough checks resolve, and exactly how foundation damage biases them.</li>
+          <li><strong>Realm 6+ abstraction</strong> &mdash; the display rules for when numbers stop being shown, and what replaces them.</li>
+          <li><strong>Settlements &amp; factions</strong> &mdash; how sects, reputation, and provenance-checking are tracked across the world.</li>
+          <li><strong>Time economy tuning</strong> &mdash; actions per day, and travel cost between regions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span>The Ninefold Ledger</span>
+      <span>Draft 04 &middot; realms 1&ndash;3 built</span>
+      <span>&sect;01&ndash;12 locked &middot; &sect;14 shipped &middot; &sect;13, &sect;15 open</span>
+    </footer>
+
+  </main>
+</div>
