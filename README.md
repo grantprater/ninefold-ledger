@@ -1,6 +1,6 @@
 # The Ninefold Ledger — MVP
 
-A xianxia deconstruction. Realms 1 and 2, built against [the design doc](DESIGN.html)
+A xianxia deconstruction. Realms 1 through 3, built against [the design doc](DESIGN.html)
 ([published version](https://claude.ai/code/artifact/2627c50a-934e-4c69-82ad-b0a45e65c916)).
 
 ```
